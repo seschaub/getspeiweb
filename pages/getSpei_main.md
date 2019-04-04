@@ -4,6 +4,7 @@
 Here I explain how getSpei works and how to visualize SPEI data. 
 
 The demonstration contains the following steps:
+
 [0.  Pre-R preparation](#head0)
 
 [1.  R preparation](#head1)
@@ -87,7 +88,7 @@ threshold <- -1.5
 plot1 <- ggplot()+
          geom_line(data = (d1 %>% filter(month==8)),aes(as.numeric(year),spei01,colour="SPEI01 August"))+
          geom_line(data = (d1 %>% filter(month==8)),aes(as.numeric(year),spei06,colour="SPEI06 August"))+
-         geom_point(data = (d1 %>% filter(month==8)),aes(year,spei01,colour="SPEI01 August")) +
+         geom_point(data = (d1 %>% filter(month==8)),aes(year,spei01,colour="SPEI01 August"))+
          geom_point(data = (d1 %>% filter(month==8)),aes(year,spei06,colour="SPEI06 August"))+
          geom_hline(yintercept = threshold)+ 
          facet_wrap( ~ location_id, nrow=1)+
