@@ -122,6 +122,3 @@ Note that the table shows you NAs because these coordinates are not indicating l
 
 ####  References: 
 Yu, M., Li, Q., Hayes, M. J., Svoboda, M. D., & Heim, R. R. (2014). Are droughts becoming more frequent or severe in China based on the standardized precipitation evapotranspiration index: 1951–2010?. International Journal of Climatology, 34(3), 545-558.
-
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
