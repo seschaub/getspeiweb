@@ -1,14 +1,14 @@
 # getSpei
 
-getSpei is a package that allows you to convinently convert SPEI netCDF files into objects (data frames or lists) that are easy to use. 
+getSpei is a package that allows you to convert SPEI netCDF files into objects (data frames or lists) that are easy to use. 
 Here I explain how getSpei works and how to visualize SPEI data. 
 
-### 0. Pre-R preperation 
+### 0. Pre-R preparation 
 
 Before starting in R you need to download the netCDF file from [Global SPEI database](http://spei.csic.es/database.html) (here I used [SPEIbase v2.5](http://digital.csic.es/handle/10261/153475)) and save it. 
 
 
-### 1. R preperation 
+### 1. R preparation 
 First, we need to install and load two packages: devtools and getSpei (note, other, required, packages are automatically installed when you run functions of the getSpei package). Second, we need to set the working directory to the folder where the SPEI netCDF files are stored. 
 
 ```{r}
@@ -19,7 +19,7 @@ devtools::install_github('seschaub/getSpei')
 require(getSpei)
 
 # Set working directory (note that directory needs to be specified):
-workdir <- "H:/Project_Forelle/New26032019/Data"
+workdir <- "H:/getspei/Data"
 setwd(workdir)
 
 ```
@@ -33,7 +33,7 @@ Lets start with the spec_spei function. It allows us to convert the SPEI netCDF 
 First, we need to create a data frame that contains location and its coordinates. I choose here only three locations, however, these can be expended. Second, we need to specify the SPEI (SPEI netCDF file), start year, end year and locations and run the function (This might take few minutes). 
 
 ```{r}
-# create dataframe:
+# create data frame:
 location_id  <- c("Vienna", "Zurich", "New York City")
 longitude    <- c(16.37,8.54,-74.25)
 latitude     <- c(48.20,47.37,40.71)
@@ -41,7 +41,8 @@ locations_df <- data.frame(location_id, longitude, latitude)
 
 
 # specify arguments and run function:
-d1 <- spec_spei(spei_files = c("spei01","spei06"), start_y = 2000, end_y = 2010, locations = locations_df)
+d1 <- spec_spei(spei_files = c("spei01","spei06"), start_y = 2000, end_y = 2010, 
+                locations = locations_df)
 
 
 ```
@@ -62,19 +63,20 @@ threshold <- -1.5
 
 # create figure and show it:
 plot1 <- ggplot()+
-            geom_line(data = (d1 %>% filter(month==8)),aes(as.numeric(year),spei01,colour="SPEI01 August"))+
-            geom_line(data = (d1 %>% filter(month==8)),aes(as.numeric(year),spei06,colour="SPEI06 August"))+
-            geom_point(data = (d1 %>% filter(month==8)),aes(year,spei01,colour="SPEI01 August")) +
-            geom_point(data = (d1 %>% filter(month==8)),aes(year,spei06,colour="SPEI06 August"))+
-            geom_hline(yintercept = threshold)+ 
-            facet_wrap( ~ location_id, nrow=1)+
-            xlab("Year") + ylab("SPEI")+
-            theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-                  panel.background = element_blank(),
-                  panel.border = element_rect(colour = "black", fill=NA, size=1),
-                  strip.background = element_blank(),
-                  strip.text = element_text(size = 14),legend.position="bottom",legend.title=element_blank()) +
-           scale_x_continuous(limits = c(2000, 2010), breaks = c(seq(2000, 2010, by=2)))
+         geom_line(data = (d1 %>% filter(month==8)),aes(as.numeric(year),spei01,colour="SPEI01 August"))+
+         geom_line(data = (d1 %>% filter(month==8)),aes(as.numeric(year),spei06,colour="SPEI06 August"))+
+         geom_point(data = (d1 %>% filter(month==8)),aes(year,spei01,colour="SPEI01 August")) +
+         geom_point(data = (d1 %>% filter(month==8)),aes(year,spei06,colour="SPEI06 August"))+
+         geom_hline(yintercept = threshold)+ 
+         facet_wrap( ~ location_id, nrow=1)+
+         xlab("Year") + ylab("SPEI")+
+         theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+               panel.background = element_blank(),
+               panel.border = element_rect(colour = "black", fill=NA, size=1),
+               strip.background = element_blank(),
+               strip.text = element_text(size = 14),legend.position="bottom",legend.title=element_blank()) +
+        scale_x_continuous(limits = c(2000, 2010), breaks = c(seq(2000, 2010, by=2)))
+
 show(plot1)
 ```
 ![spec_spei_viz](https://user-images.githubusercontent.com/44777479/55562107-9ba78700-56f3-11e9-8a10-f55a8244ec6b.png)
@@ -96,9 +98,9 @@ d2 <- all_spei(spei_files = c("spei01","spei06"), start_y = 2003, end_y = 2004)
 
 
 ### 3.2 Data visualization 
-To visulaize the data we need to run an extra function, i.e. all_spei_viz. This function returns a list containing of a grid and SPEI data. 
-Here, we will use this function to vizulaize the six month SPEI in the month August in year 2003. Note that, differntly to the other function, we need to decide here on one SPEI and a particular month of a year. 
-After we run the function we have to save the different elements of the list seperatly, decide on cutoffs and colours and visulaize it. 
+To visualize the data we need to run an extra function, i.e. all_spei_viz. This function returns a list containing of a grid and SPEI data. 
+Here, we will use this function to visualize the six month SPEI in the month August in year 2003. Note that, differently to the other function, we need to decide here on one SPEI and a particular month of a year. 
+After we run the function we have to save the different elements of the list separately, decide on cutoffs and colors and visualize it. 
 
 ```{r}
 # run function
@@ -107,9 +109,11 @@ list1 <- all_spei_viz(c("spei01"), year = 2003, month = 8)
 # visualizing
 grid1 <- list1$grid  # extract grid from list generated by all_spei_viz 
 d1    <- list1$data  # extract SPEI data from list generated by all_spei_viz 
-cutoffs <- c(-2, -1.5, -1, 1, 1.5, 2) # decide of cutoffs, we use cutoffs based on Yu et al. (2014)
+cutoffs <- c(-2, -1.5, -1, 1, 1.5, 2) # decide of cutoffs
 color <- c("#ca0020","#f4a582","#a1d99b","#92c5de","#0571b0") # define colors
-map1 <- levelplot(d1 ~ lon * lat, data = grid1, at = cutoffs, cuts = 6, pretty = T, col.regions = color) # create map
+map1 <- levelplot(d1 ~ lon * lat, data = grid1, at = cutoffs, cuts = 6, pretty = T, 
+                  col.regions = color) # create map
+                  
 show(map1)
 
 ```
