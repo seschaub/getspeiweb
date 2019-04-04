@@ -118,6 +118,7 @@ d2 <- all_spei(spei_files = c("spei01","spei06"), start_y = 2003, end_y = 2004)
 
 ```
 ![head_all_spei](https://user-images.githubusercontent.com/44777479/55563174-b2e77400-56f5-11e9-8e6d-c517c6304f52.JPG)
+Note that the table shows you NAs because these coordinates are not indicating land area. 
 
 
 ### 3.2 <a name="head32"></a>Data visualization 
@@ -142,7 +143,6 @@ show(map1)
 ```
 ![all_spei_viz](https://user-images.githubusercontent.com/44777479/55563125-9e0ae080-56f5-11e9-890e-f51c6d9f65ce.png)
 
-Note that the table shows you NAs because these coordinates are not indicating land area. 
 
 
 
