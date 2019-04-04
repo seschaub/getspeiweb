@@ -1,14 +1,3 @@
----
-title: "getSpei"
-author: "Sergei Schaub"
-date: "4 April 2019"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # getSpei
 
 getSpei is a package that allows you to convinently convert SPEI netCDF files into objects (data frames or lists) that are easy to use. 
@@ -44,7 +33,6 @@ Lets start with the spec_spei function. It allows us to convert the SPEI netCDF 
 First, we need to create a data frame that contains location and its coordinates. I choose here only three locations, however, these can be expended. Second, we need to specify the SPEI (SPEI netCDF file), start year, end year and locations and run the function (This might take few minutes). 
 
 ```{r}
-
 # create dataframe:
 location_id  <- c("Vienna", "Zurich", "New York City")
 longitude    <- c(16.37,8.54,-74.25)
@@ -57,9 +45,7 @@ d1 <- spec_spei(spei_files = c("spei01","spei06"), start_y = 2000, end_y = 2010,
 
 
 ```
-
-# How here head() maybe simly a screenshot. 
-![spec_spei_viz](https://user-images.githubusercontent.com/44777479/55562107-9ba78700-56f3-11e9-8a10-f55a8244ec6b.png)
+![head_spec_spei](https://user-images.githubusercontent.com/44777479/55563159-aa8f3900-56f5-11e9-9271-321f8b479d04.JPG)
 
 
 ### 2.2 Data visualization 
@@ -91,10 +77,7 @@ plot1 <- ggplot()+
            scale_x_continuous(limits = c(2000, 2010), breaks = c(seq(2000, 2010, by=2)))
 show(plot1)
 ```
-# HERE WE NEED A FIGURE
-
-
-
+![spec_spei_viz](https://user-images.githubusercontent.com/44777479/55562107-9ba78700-56f3-11e9-8a10-f55a8244ec6b.png)
 
 ### 3. all_spei
 
@@ -109,6 +92,8 @@ The steps for the function all_spei is even simpler, we only have to specify the
 d2 <- all_spei(spei_files = c("spei01","spei06"), start_y = 2003, end_y = 2004)
 
 ```
+![head_all_spei](https://user-images.githubusercontent.com/44777479/55563174-b2e77400-56f5-11e9-8e6d-c517c6304f52.JPG)
+
 
 ### 3.2 Data visualization 
 To visulaize the data we need to run an extra function, i.e. all_spei_viz. This function returns a list containing of a grid and SPEI data. 
@@ -128,8 +113,9 @@ map1 <- levelplot(d1 ~ lon * lat, data = grid1, at = cutoffs, cuts = 6, pretty =
 show(map1)
 
 ```
-# HERE WE NEED A FIGURE
+![all_spei_viz](https://user-images.githubusercontent.com/44777479/55563125-9e0ae080-56f5-11e9-890e-f51c6d9f65ce.png)
 
+Note that the table shows you NAs because these coordinates are not indicating land area. 
 
 
 
