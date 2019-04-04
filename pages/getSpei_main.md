@@ -59,6 +59,7 @@ d1 <- spec_spei(spei_files = c("spei01","spei06"), start_y = 2000, end_y = 2010,
 ```
 
 # How here head() maybe simly a screenshot. 
+![spec_spei_viz](https://user-images.githubusercontent.com/44777479/55562107-9ba78700-56f3-11e9-8a10-f55a8244ec6b.png)
 
 
 ### 2.2 Data visualization 
