@@ -8,7 +8,6 @@ description: These webpage explores the getSpei package and shows you how to vis
 
 
 - [page md](pages/getSpei_main.html)
-- [page Rmd](test.html)
 - [Making a personal site](pages/user_site.html)
 
 
