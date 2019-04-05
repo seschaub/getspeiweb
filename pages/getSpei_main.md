@@ -1,3 +1,5 @@
+## getSpei
+
 ***getSpei*** is a package that allows you to convert SPEI netCDF files into easy to use objects (data frames or lists). 
 Here I explain how getSpei works and how to visualize SPEI data. 
 
