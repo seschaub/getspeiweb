@@ -1,6 +1,4 @@
-# getSpei
-
-*getSpei* is a package that allows you to convert SPEI netCDF files into easy to use objects (data frames or lists). 
+***getSpei*** is a package that allows you to convert SPEI netCDF files into easy to use objects (data frames or lists). 
 Here I explain how getSpei works and how to visualize SPEI data. 
 
 The demonstration contains the following steps:
@@ -48,7 +46,7 @@ setwd(workdir)
 
 ### <a name="head2"></a>2. spec_spei
 
-Lets start with the *spec_spei* function. It allows us to convert the SPEI netCDF file into a data frame. In detail, it allows us to set a time range (years) and specify specific (multiple) locations. The function also returns the exact coordinates of the center of the grid the SPEI value is taken from. 
+Lets start with the ***spec_spei*** function. It allows us to convert the SPEI netCDF file into a data frame. In detail, it allows us to set a time range (years) and specify specific (multiple) locations. The function also returns the exact coordinates of the center of the grid the SPEI value is taken from. 
 
 
 ### <a name="head21"></a>2.1 Data processing
@@ -106,7 +104,7 @@ show(plot1)
 
 ### <a name="head3"></a>3. all_spei
 
-Lets now turn to the *all_spei* function. It allows us to convert the SPEI netCDF file into a data frame. In detail, it allows us to set a time range (years) and it returns us a global dataset. 
+Lets now turn to the ***all_spei*** function. It allows us to convert the SPEI netCDF file into a data frame. In detail, it allows us to set a time range (years) and it returns us a global dataset. 
 
 
 ### <a name="head31"></a>3.1 Data processing
@@ -141,11 +139,11 @@ map1 <- levelplot(d1 ~ lon * lat, data = grid1, at = cutoffs, cuts = 6, pretty =
 show(map1)
 
 ```
-![all_spei_viz](https://user-images.githubusercontent.com/44777479/55563125-9e0ae080-56f5-11e9-890e-f51c6d9f65ce.png)
+![all_spei_viz](https://user-images.githubusercontent.com/44777479/55617306-14f6b680-5794-11e9-8360-5c923d0194dd.png)
 
 
 
 
 
 ####  References: 
-Yu, M., Li, Q., Hayes, M. J., Svoboda, M. D., & Heim, R. R. (2014). Are droughts becoming more frequent or severe in China based on the standardized precipitation evapotranspiration index: 1951–2010?. International Journal of Climatology, 34(3), 545-558.
+*Yu, M., Li, Q., Hayes, M. J., Svoboda, M. D., & Heim, R. R. (2014). Are droughts becoming more frequent or severe in China based on the standardized precipitation evapotranspiration index: 1951–2010?. International Journal of Climatology, 34(3), 545-558.*
